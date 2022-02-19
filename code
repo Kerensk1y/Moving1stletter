@@ -1,0 +1,27 @@
+import pygame
+import time
+def main():
+    pygame.init()
+    pygame.font.init()
+    myfont = pygame.font.SysFont('Consolas', 30)
+    
+    DISPLAY=pygame.display.set_mode((500,400),0,32)
+    t=0.0
+    delay=1.0
+    str_array=['Ivanova', ' vanova']
+    current = 0
+    while True:
+        if pygame.time.get_ticks()/1000 >= t + delay:
+            t += delay
+            current = (current + 1) % 2
+        DISPLAY.fill((255,255,255))
+        textsurface = myfont.render(str_array[current], False, (0, 0, 0))
+        DISPLAY.blit(textsurface,(0,0))
+        pygame.time.get_ticks()
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                pygame.quit()
+        pygame.display.update()
+
+        
+main()
